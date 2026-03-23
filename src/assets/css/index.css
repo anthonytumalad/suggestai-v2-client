@@ -1,1 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+@import 'primeicons/primeicons.css';
+
+@theme {
+  /* ─── Typography: Font Families ─── */
+  --font-sans: "Inter", sans-serif;
+  --font-brand: "Google Sans", sans-serif;
+  --font-system: "Roboto", sans-serif;
+
+  /* ─── Typography: Font Sizes ─── */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-md:   1.125rem;   /* 18px */
+  --text-lg:   1.25rem;    /* 20px */
+  --text-xl:   1.5rem;     /* 24px */
+  --text-2xl:  1.875rem;   /* 30px */
+  --text-3xl:  2.25rem;    /* 36px */
+  --text-4xl:  3rem;       /* 48px */
+  --text-5xl:  3.75rem;    /* 60px */
+
+  /* ─── Typography: Font Weights ─── */
+  --font-weight-light:    300;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+
+  /* ─── Typography: Line Heights ─── */
+  --leading-tight:  1.25;
+  --leading-snug:   1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose:  2;
+
+  /* ─── Typography: Letter Spacing ─── */
+  --tracking-tight:  -0.025em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.025em;
+  --tracking-wider:   0.05em;
+  --tracking-widest:  0.1em;
+
+  /* ─── Colors: Content (Foreground) ─── */
+  --color-content:          #1a202c;   /* primary text */
+  --color-content-secondary: #4a5568;  /* secondary text */
+  --color-content-muted:    #718096;   /* placeholder, captions */
+  --color-content-disabled: #a0aec0;   /* disabled text */
+  --color-content-inverse:  #ffffff;   /* text on dark bg */
+
+  /* ─── Colors: Action (Brand / Interactive) ─── */
+  --color-action-subtle:  #ccfbf1;   /* light tint, hover bg */
+  --color-action-light:   #5eead4;   /* light variant */
+  --color-action:         #14b8a6;   /* default */
+  --color-action-hover:   #0d9488;   /* hover */
+  --color-action-active:  #0f766e;   /* pressed */
+  --color-action-dark:    #115e59;   /* deep variant */
+
+  /* ─── Colors: Accent ─── */
+  --color-accent-subtle:  #ebf8ff;
+  --color-accent-light:   #63b3ed;
+  --color-accent:         #3182ce;
+  --color-accent-hover:   #2b6cb0;
+  --color-accent-active:  #2c5282;
+
+  /* ─── Colors: Surface (Backgrounds) ─── */
+  --color-bg:             #ffffff;   /* page background */
+  --color-surface:        #f7fafc;   /* card, panel */
+  --color-surface-raised: #edf2f7;   /* elevated surface */
+  --color-surface-overlay:#e2e8f0;   /* overlay, modal backdrop */
+
+  /* ─── Colors: Border ─── */
+  --color-border:         #ced4da;   /* default border */
+  --color-border-strong:  #cbd5e0;   /* emphasized border */
+  --color-border-focus:   #b3bac2;   /* focus ring */
+
+  /* ─── Colors: Feedback — Error ─── */
+  --color-error-subtle:   #fff5f5;
+  --color-error-light:    #fc8181;
+  --color-error:          #e53e3e;
+  --color-error-dark:     #c53030;
+
+  /* ─── Colors: Feedback — Success ─── */
+  --color-success-subtle: #f0fff4;
+  --color-success-light:  #68d391;
+  --color-success:        #38a169;
+  --color-success-dark:   #276749;
+
+  /* ─── Colors: Feedback — Warning ─── */
+  --color-warning-subtle: #fffff0;
+  --color-warning-light:  #f6e05e;
+  --color-warning:        #d69e2e;
+  --color-warning-dark:   #b7791f;
+
+  /* ─── Colors: Feedback — Info ─── */
+  --color-info-subtle:    #ebf8ff;
+  --color-info-light:     #63b3ed;
+  --color-info:           #3182ce;
+  --color-info-dark:      #2b6cb0;
+}
+
+/* ─── Base Styles ─── */
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-brand);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-regular);
+  min-height: 100vh;
+  color: var(--color-content);
+  letter-spacing: var(--tracking-normal);
+  line-height: var(--leading-normal);
+  background-color: var(--color-bg);
+}
+
+.pi {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 1;
+  vertical-align: middle;
+
+  font-style: normal;
+
+  width: 1em;
+  height: 1em;
+}
+
+.pi::before {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
+
+.p-tooltip {
+  position: absolute;
+  z-index: 9999;
+  padding: 0 0.25rem;
+}
+
+.p-tooltip .p-tooltip-text {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.p-tooltip-arrow {
+  display: none;
+}
+
+/* Paginator wrapper */
+[data-pc-name="paginator"] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-top: 12px;
+}
+
+/* Page buttons */
+[data-pc-name="paginator"] [data-pc-section="pagebutton"],
+[data-pc-name="paginator"] [data-pc-section="firstpagebutton"],
+[data-pc-name="paginator"] [data-pc-section="prevpagebutton"],
+[data-pc-name="paginator"] [data-pc-section="nextpagebutton"],
+[data-pc-name="paginator"] [data-pc-section="lastpagebutton"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: var(--color-content-muted);
+}
+
+[data-pc-name="paginator"] [data-pc-section="pagebutton"]:hover,
+[data-pc-name="paginator"] [data-pc-section="firstpagebutton"]:hover,
+[data-pc-name="paginator"] [data-pc-section="prevpagebutton"]:hover,
+[data-pc-name="paginator"] [data-pc-section="nextpagebutton"]:hover,
+[data-pc-name="paginator"] [data-pc-section="lastpagebutton"]:hover {
+  background-color: var(--color-surface-overlay);
+  color: var(--color-content);
+}
+
+/* Active page */
+[data-pc-name="paginator"] [data-pc-section="pagebutton"][data-p-active="true"] {
+  background-color: var(--color-surface-overlay);
+  color: var(--color-content);
+  font-weight: 600;
+}
+
+
